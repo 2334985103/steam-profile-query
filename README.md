@@ -8,6 +8,8 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
+**中文** | [English](README_EN.md)
+
 ## ✨ 功能特性
 
 - 🎮 **游戏库展示** - 完整展示用户的 Steam 游戏库
@@ -79,7 +81,8 @@ steam-profile-query/
 ├── api.php             # 后端 API 处理
 ├── script.js           # 前端脚本
 ├── style.css           # 样式文件
-└── README.md           # 项目说明
+├── README.md           # 中文文档
+└── README_EN.md        # 英文文档
 ```
 
 ## 🔧 核心功能实现
@@ -140,7 +143,7 @@ function detectDevice() {
 - QQ: 2334985103
 - 微信: North10006
 - 邮箱: [2334985103@qq.com](mailto:2334985103@qq.com)
-- Steam: [好友代码 1128412874](https://steamcommunity.com/profiles/76561199088678602)
+- Steam: [好友代码 1128412874](https://steamcommunity.com/profiles/76561199091658602)
 
 ## 🙏 致谢
 
