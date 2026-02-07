@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam 档案查询</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 设备检测提示 -->
+    <div class="device-notice" id="deviceNotice">
+        <i class="fas fa-desktop" id="deviceIcon"></i>
+        <span id="deviceText">正在检测设备...</span>
+    </div>
+
+    <!-- 加载页面 -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="steam-logo">
+                <i class="fab fa-steam"></i>
+            </div>
+            <div class="loading-text">
+                <span class="letter">L</span>
+                <span class="letter">O</span>
+                <span class="letter">A</span>
+                <span class="letter">D</span>
+                <span class="letter">I</span>
+                <span class="letter">N</span>
+                <span class="letter">G</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <div class="loading-status">初始化系统...</div>
+        </div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- 主应用 -->
+    <div class="app" id="app" style="display: none;">
+        <!-- 动态背景 -->
+        <div class="bg-animation">
+            <div class="bg-grid"></div>
+            <div class="bg-glow"></div>
+            <div class="bg-lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fab fa-steam"></i>
+                <span>STEAM<span class="highlight">QUERY</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">查询</a>
+                <a href="about.html">关于</a>
+            </div>
+        </nav>
+
+        <!-- 主内容区 -->
+        <main class="main">
+            <!-- 搜索页面 -->
+            <section class="search-page" id="searchPage">
+                <div class="search-container">
+                    <div class="title-section">
+                        <h1 class="glitch" data-text="STEAM PROFILE">STEAM PROFILE</h1>
+                        <p class="subtitle">输入好友代码，探索 Steam 档案</p>
+                    </div>
+
+                    <div class="search-card">
+                        <div class="card-glow"></div>
+                        <div class="search-input-group">
+                            <div class="input-icon">
+                                <i class="fas fa-fingerprint"></i>
+                            </div>
+                            <input type="text" 
+                                   id="friendCode" 
+                                   class="search-input" 
+                                   placeholder="输入 Steam 好友代码..."
+                                   maxlength="17"
+                                   autocomplete="off">
+                            <div class="input-border"></div>
+                        </div>
+
+                        <button class="search-btn" id="searchBtn">
+                            <span class="btn-text">开始查询</span>
+                            <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </div>
+
+                    <div class="error-message" id="errorMessage">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span></span>
+                    </div>
+
+                    <div class="features">
+                        <div class="feature-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span>游戏库</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>游戏时长</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>注册信息</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-user-circle"></i>
+                            <span>在线状态</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 查询中页面 -->
+            <section class="querying-page" id="queryingPage" style="display: none;">
+                <div class="querying-container">
+                    <div class="cyber-spinner">
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-core">
+                            <i class="fab fa-steam"></i>
+                        </div>
+                    </div>
+                    <div class="querying-text">
+                        <span class="typing-text" id="typingText">正在连接 Steam 服务器...</span>
+                        <span class="cursor">|</span>
+                    </div>
+                    <div class="querying-steps">
+                        <div class="step active" data-step="1">
+                            <div class="step-number">01</div>
+                            <div class="step-label">验证身份</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">02</div>
+                            <div class="step-label">获取档案</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-number">03</div>
+                            <div class="step-label">分析数据</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 结果页面 -->
+            <section class="result-page" id="resultPage" style="display: none;">
+                <div class="result-container">
+                    <!-- 返回按钮 -->
+                    <button class="back-btn" id="backBtn">
+                        <i class="fas fa-chevron-left"></i>
+                        <span>返回</span>
+                    </button>
+
+                    <!-- 个人资料卡片 -->
+                    <div class="profile-hero">
+                        <div class="profile-bg"></div>
+                        <div class="profile-content">
+                            <div class="avatar-section">
+                                <div class="avatar-frame">
+                                    <img src="" alt="Avatar" id="avatar" class="avatar">
+                                    <div class="avatar-glow"></div>
+                                    <div class="status-ring" id="statusRing"></div>
+                                </div>
+                                <div class="status-badge" id="statusBadge">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text"></span>
+                                </div>
+                            </div>
+                            <div class="profile-info">
+                                <h2 class="profile-name" id="profileName"></h2>
+                                <div class="profile-id">
+                                    <span class="id-label">STEAM ID</span>
+                                    <span class="id-value" id="steamId"></span>
+                                    <button class="copy-btn" id="copyBtn" title="复制">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="current-game" id="currentGame"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 统计卡片 -->
+                    <div class="stats-grid">
+                        <div class="stat-card" data-stat="games">
+                            <div class="stat-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="stat-value" id="gameCount">0</div>
+                            <div class="stat-label">拥有游戏</div>
+                            <div class="stat-bar">
+                                <div class="stat-fill"></div>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-stat="time">
+                            <div class="stat-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div class="stat-value" id="totalPlaytime">0h</div>
+                            <div class="stat-label">总游戏时长</div>
+                            <div class="stat-bar">
+                                <div class="stat-fill"></div>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-stat="date">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-value" id="registerDate">-</div>
+                            <div class="stat-label">注册日期</div>
+                            <div class="stat-bar">
+                                <div class="stat-fill"></div>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-stat="age">
+                            <div class="stat-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="stat-value" id="accountAge">0</div>
+                            <div class="stat-label">账号年龄</div>
+                            <div class="stat-bar">
+                                <div class="stat-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评语区域 -->
+                    <div class="comments-section">
+                        <div class="comment-card playtime-comment" id="playtimeComment">
+                            <i class="fas fa-clock"></i>
+                            <span></span>
+                        </div>
+                        <div class="comment-card style-comment" id="styleComment">
+                            <i class="fas fa-gamepad"></i>
+                            <span></span>
+                        </div>
+                        <div class="comment-card account-comment" id="accountComment">
+                            <i class="fas fa-user-clock"></i>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <!-- 游戏列表 -->
+                    <div class="games-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-list-ul"></i> 游戏库</h3>
+                            <div class="sort-controls">
+                                <button class="sort-btn active" data-sort="playtime">
+                                    <i class="fas fa-sort-amount-down"></i>
+                                    时长
+                                </button>
+                                <button class="sort-btn" data-sort="name">
+                                    <i class="fas fa-font"></i>
+                                    名称
+                                </button>
+                            </div>
+                        </div>
+                        <div class="games-list" id="gamesList"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>Steam Profile Query System | Powered by Steam Web API</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

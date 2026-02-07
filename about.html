@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 - Steam Profile Query</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 动态背景 -->
+    <div class="bg-animation">
+        <div class="bg-grid"></div>
+        <div class="bg-glow"></div>
+        <div class="bg-lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fab fa-steam"></i>
+            <span>STEAM<span class="highlight">QUERY</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">查询</a>
+            <a href="about.html" class="active">关于</a>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="main">
+        <section class="about-page">
+            <div class="about-container">
+                <div class="about-header">
+                    <h1 class="glitch" data-text="ABOUT">ABOUT</h1>
+                    <p class="subtitle">关于 Steam Profile Query 系统</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-card hero-card">
+                        <div class="card-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>系统介绍</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Steam Profile Query 是一个基于 Steam Web API 开发的个人资料查询系统，旨在帮助用户快速了解 Steam 账号的游戏情况。</p>
+                            <p>通过输入 Steam 好友代码，系统可以获取并分析账号的游戏库、游戏时长、注册时间等信息，并提供个性化的评语和分析。</p>
+                        </div>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="card-header">
+                            <i class="fas fa-cogs"></i>
+                            <h3>核心功能</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> 游戏库完整展示</li>
+                                <li><i class="fas fa-check-circle"></i> 游戏时长分析（天/小时格式）</li>
+                                <li><i class="fas fa-check-circle"></i> 账号注册时间计算</li>
+                                <li><i class="fas fa-check-circle"></i> 基于游戏类型的风格分析</li>
+                                <li><i class="fas fa-check-circle"></i> 智能评语系统</li>
+                                <li><i class="fas fa-check-circle"></i> 设备检测与适配提示</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="card-header">
+                            <i class="fas fa-database"></i>
+                            <h3>数据来源</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>本系统使用 Steam Web API 获取数据，包括：</p>
+                            <ul class="api-list">
+                                <li><code>ISteamUser/GetPlayerSummaries</code> - 获取玩家基本信息</li>
+                                <li><code>IPlayerService/GetOwnedGames</code> - 获取已拥有游戏列表</li>
+                            </ul>
+                            <p class="note">所有数据均来自 Steam 官方 API，本系统仅做分析和展示，不存储任何用户数据。</p>
+                        </div>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="card-header">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>技术特性</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="tech-grid">
+                                <div class="tech-item">
+                                    <i class="fab fa-html5"></i>
+                                    <span>HTML5</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-css3-alt"></i>
+                                    <span>CSS3</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-js"></i>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-php"></i>
+                                    <span>PHP</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-steam"></i>
+                                    <span>Steam API</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="card-header">
+                            <i class="fas fa-question-circle"></i>
+                            <h3>常见问题</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="faq-container">
+                                <div class="faq-item">
+                                    <h4><i class="fas fa-question-circle"></i> 为什么头像不显示？</h4>
+                                    <p>头像使用 Steam 官方 CDN 链接，可能因网络问题导致加载缓慢。系统已添加备用头像机制。</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4><i class="fas fa-question-circle"></i> 游戏时长为什么显示为 0？</h4>
+                                    <p>可能是该游戏未在 Steam 客户端中运行，或游戏数据尚未同步到 Steam 服务器。</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4><i class="fas fa-question-circle"></i> 注册时间为什么显示为未知？</h4>
+                                    <p>部分 Steam 账号可能未公开注册时间，或 Steam API 未返回该字段。</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4><i class="fas fa-question-circle"></i> 如何获取 Steam 好友代码？</h4>
+                                    <p>在 Steam 客户端中，点击个人资料 → 编辑个人资料 → 账号 → 复制 Steam ID。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="card-header">
+                            <i class="fas fa-heart"></i>
+                            <h3>致谢</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>感谢以下开源项目和服务：</p>
+                            <ul class="thanks-list">
+                                <li><i class="fab fa-steam"></i> Steam Web API</li>
+                                <li><i class="fab fa-font-awesome"></i> Font Awesome</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="about-card">
+                        <div class="card-header">
+                            <i class="fas fa-user"></i>
+                            <h3>作者信息</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="author-profile">
+                                <div class="author-avatar">
+                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20black%20and%20white%20portrait%20of%20a%20young%20man%20with%20short%20hair%20in%20suit%20looking%20to%20the%20side&image_size=square" alt="lhost" class="avatar-image">
+                                </div>
+                                <div class="author-info">
+                                    <p class="author-name">作者：lhost</p>
+                                    <ul class="contact-list">
+                                        <li><i class="fab fa-qq"></i> QQ：2334985103</li>
+                                        <li><i class="fab fa-weixin"></i> 微信：North10006</li>
+                                        <li><i class="fas fa-envelope"></i> 邮箱：<a href="mailto:2334985103@qq.com" class="email-link">2334985103@qq.com</a></li>
+                                        <li><i class="fab fa-steam"></i> Steam 好友代码：1128412874</li>
+                                    </ul>
+                                    <a href="https://github.com/2334985103/" target="_blank" class="github-btn">
+                                        <i class="fab fa-github"></i>
+                                        <span>GitHub Profile</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="copyright">© 2026 Steam Profile Query System</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>Steam Profile Query System | Powered by Steam Web API</p>
+    </footer>
+
+    <script>
+        // 页面加载动画
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
