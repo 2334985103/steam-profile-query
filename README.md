@@ -140,7 +140,7 @@ function detectDevice() {
 - QQ: 2334985103
 - 微信: North10006
 - 邮箱: [2334985103@qq.com](mailto:2334985103@qq.com)
-- Steam: [好友代码 1128412874](https://steamcommunity.com/profiles/76561199091658602)
+- Steam: [好友代码 1128412874](https://steamcommunity.com/profiles/76561199088678602)
 
 ## 🙏 致谢
 
