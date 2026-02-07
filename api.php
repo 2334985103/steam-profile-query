@@ -5,7 +5,7 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // 在这里配置你的 Steam API Key
-$DEFAULT_API_KEY = '1913B21988D947F4DD06A722E5E850BB';
+$DEFAULT_API_KEY = 'YOUR_STEAM_API_KEY_HERE';
 
 // 获取请求参数
 $input = json_decode(file_get_contents('php://input'), true);
@@ -614,3 +614,4 @@ function analyzeGamingStyle($gameGenres, $totalPlaytime) {
     
     return $styles[$topGenre][$level] ?? $styles['Other'][$level];
 }
+
