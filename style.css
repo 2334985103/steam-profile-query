@@ -47,13 +47,13 @@
     --text-muted: #999999;
     --border: rgba(85, 85, 85, 0.3);
     --glow: rgba(85, 85, 85, 0.3);
-    --success: #666666;
-    --warning: #888888;
-    --error: #777777;
+    --success: #4caf50;
+    --warning: #ff9800;
+    --error: #f44336;
     --offline: #999999;
-    --online: #666666;
-    --busy: #777777;
-    --away: #888888;
+    --online: #4caf50;
+    --busy: #f44336;
+    --away: #ff9800;
 }
 
 * {
